@@ -28,13 +28,6 @@ export const Header = styled.header`
     margin-bottom: 0px;
   }
 
-  #nav-home {
-    max-width: 100%;
-    width: 900px;
-    height: 72px;
-    border-bottom: 1px solid var(--gray-3);
-  }
-
   p {
     font: var(--regular-16);
   }

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -56,23 +55,6 @@ const GlobalStyle = createGlobalStyle`
     height: 600px;
   }
 
-    nav {
-    margin: 0 auto;
-    margin-top: 48px;
-    margin-bottom: 38px;
-    height: 40px;
-    width: 370px;
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-      @media (max-width: 800px) {
-      width: 70%;
-      }
-      @media (max-width: 450px) {
-      width: 300px;
-      }
-    }
-
   a{
     display: flex;
     align-items: center;
@@ -82,26 +64,6 @@ const GlobalStyle = createGlobalStyle`
     `;
 
 export default GlobalStyle;
-
-export const LinkToLogin = styled(Link)`
-  padding: 5px 16px;
-  width: fit-content;
-  height: 32px;
-  border-radius: var(--radius);
-  background-color: var(--gray-3);
-  color: var(--gray-0);
-  font: var(--bold-12);
-`;
-
-export const LinkSubmit = styled(Link)`
-  margin: 0 auto;
-  background-color: var(--gray-1);
-  width: 324px;
-  max-width: 100%;
-  height: 48px;
-  border-radius: var(--radius);
-  color: var(--gray-0);
-`;
 
 export const Container = styled.div`
   max-width: 100%;
@@ -143,7 +105,6 @@ export const Container = styled.div`
     max-width: 100%;
   }
 
-  form input,
   select {
     max-width: 100%;
     height: 48px;
@@ -154,17 +115,6 @@ export const Container = styled.div`
     color: var(--gray-1);
     font: var(--regular-16);
     outline: none;
-  }
-
-  form input::placeholder {
-    font: var(--regular-16);
-  }
-
-  form input:focus,
-  select:focus {
-    font: var(--regular-16);
-    outline-color: var(--gray-0);
-    color: var(--gray-0);
   }
 
   form button {

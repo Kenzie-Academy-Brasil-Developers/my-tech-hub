@@ -1,9 +1,12 @@
-import { LinkToLogin, Container } from "../../globalStyle.js";
+import { Container } from "../../globalStyle.js";
+import { LinkToLogin } from "../../components/Link/styled.js";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../routes/services/api.js";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { Nav } from "../../components/Nav/styled.js";
+import { Input } from "../../components/Input/index.jsx";
 
 const schema = yup
   .object({
@@ -46,7 +49,6 @@ export function Register({ toast }) {
   const navigate = useNavigate();
   async function submitsRegister(data) {
     delete data.passwordConfirmation;
-    console.log(data);
     try {
       await api.post("/users", data);
       toast.success("Conta criada com sucesso!");
@@ -58,12 +60,12 @@ export function Register({ toast }) {
   }
   return (
     <main>
-      <nav>
+      <Nav>
         <figure>
           <img src="/logo.svg" alt="Logo, em rosa: Kenzie Hub" />
         </figure>
         <LinkToLogin to="/">Voltar</LinkToLogin>
-      </nav>
+      </Nav>
 
       <Container>
         <section id="register-section">
@@ -73,59 +75,59 @@ export function Register({ toast }) {
           </div>
 
           <form id="register-form" onSubmit={handleSubmit(submitsRegister)}>
-            <label htmlFor="name">Nome</label>
-            <input
+            <Input
+              label="Nome"
+              id="name"
               type="text"
-              name="name"
+              error={errors.name?.message}
+              register={register}
               placeholder="Digite aqui seu nome"
-              {...register("name")}
             />
-            <span>{errors.name?.message}</span>
 
-            <label htmlFor="email">E-mail</label>
-            <input
+            <Input
+              label="E-mail"
+              id="email"
               type="text"
-              name="email"
+              error={errors.email?.message}
+              register={register}
               placeholder="Digite aqui seu e-mail"
-              {...register("email")}
             />
-            <span>{errors.email?.message}</span>
 
-            <label htmlFor="password">Senha</label>
-            <input
+            <Input
+              label="Senha"
+              id="password"
               type="password"
-              name="password"
+              error={errors.password?.message}
+              register={register}
               placeholder="Digite aqui sua senha"
-              {...register("password")}
             />
-            <span>{errors.password?.message}</span>
 
-            <label htmlFor="passwordConfirmation">Confirmar senha</label>
-            <input
+            <Input
+              label="Confirmar senha"
+              id="passwordConfirmation"
               type="password"
-              name="passwordConfirmation"
+              error={errors.passwordConfirmation?.message}
+              register={register}
               placeholder="Digite novamente sua senha"
-              {...register("passwordConfirmation")}
             />
-            <span>{errors.passwordConfirmation?.message}</span>
 
-            <label htmlFor="bio">Bio</label>
-            <input
+            <Input
+              label="Bio"
+              id="bio"
               type="text"
-              name="bio"
+              error={errors.bio?.message}
+              register={register}
               placeholder="Fale sobre você"
-              {...register("bio")}
             />
-            <span>{errors.bio?.message}</span>
 
-            <label htmlFor="contact">Telefone de contato</label>
-            <input
+            <Input
+              label="Contato"
+              id="contact"
               type="text"
-              name="contact"
+              error={errors.contact?.message}
+              register={register}
               placeholder="Opção de contato"
-              {...register("contact")}
             />
-            <span>{errors.contact?.message}</span>
 
             <label htmlFor="course_module">Tipo de valor</label>
             <select name="course_module" {...register("course_module")}>
@@ -136,7 +138,7 @@ export function Register({ toast }) {
               <option value="m5">M5</option>
               <option value="m6">M6</option>
             </select>
-            <button id="submit" type="submit" /* disabled={true} */>
+            <button id="submit" type="submit">
               Cadastrar
             </button>
           </form>

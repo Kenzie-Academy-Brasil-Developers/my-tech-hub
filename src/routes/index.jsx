@@ -8,13 +8,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { api } from "./services/api.js";
 
 export function AppRoutes() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
 
   async function submitsLogin(data) {
     try {
       const response = await api.post("/sessions", data);
       localStorage.setItem("@kenzie-hub-token", response.data.token);
+      localStorage.setItem("@kenzie-hub-id", response.data.user.id);
       setUser(response.data.user);
       toast.success("Login feito!");
       navigate("/home");
@@ -32,7 +33,7 @@ export function AppRoutes() {
           element={<Login toast={toast} submitsLogin={submitsLogin} />}
         />
         <Route path="/cadastro" element={<Register toast={toast} />} />
-        <Route path="/home" element={<Home user={user} />} />
+        <Route path="/home" element={<Home user={user} setUser={setUser} />} />
         <Route path="*" element={<h1>404 - Página não encontrada ://</h1>} />
       </Routes>
       <ToastContainer

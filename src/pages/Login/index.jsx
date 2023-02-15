@@ -1,7 +1,9 @@
-import { LinkSubmit, Container } from "../../globalStyle.js";
+import { Container } from "../../globalStyle.js";
+import { LinkSubmit } from "../../components/Link/styled.js";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { Input } from "../../components/Input/index.jsx";
 
 const schema = yup
   .object({
@@ -30,24 +32,25 @@ export function Login({ submitsLogin }) {
       <Container>
         <section id="login-section">
           <h3>Login</h3>
-          <form onSubmit={handleSubmit(submitsLogin)}>
-            <label htmlFor="email">E-mail</label>
-            <input
-              type="text"
-              name="email"
-              placeholder="Digite aqui seu e-mail"
-              {...register("email")}
-            />
-            <span>{errors.email?.message}</span>
 
-            <label htmlFor="password">Senha</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Digite aqui sua senha"
-              {...register("password")}
+          <form onSubmit={handleSubmit(submitsLogin)}>
+            <Input
+              label="E-mail"
+              id="email"
+              type="text"
+              error={errors.email?.message}
+              register={register}
+              placeholder="Digite aqui seu e-mail"
             />
-            <span>{errors.password?.message}</span>
+
+            <Input
+              label="Senha"
+              id="password"
+              type="password"
+              error={errors.password?.message}
+              register={register}
+              placeholder="Digite aqui sua senha"
+            />
 
             <button>Entrar</button>
           </form>
