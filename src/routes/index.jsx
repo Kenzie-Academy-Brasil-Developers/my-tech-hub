@@ -1,39 +1,31 @@
-import React, { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { api } from "./services/api.js";
+import { TechProvider } from "../providers/TechContext.jsx";
+import { ProtectedRoute } from "../pages/ProtectedRoutes/index.jsx";
 
 export function AppRoutes() {
-  const [user, setUser] = useState({});
-  const navigate = useNavigate();
-
-  async function submitsLogin(data) {
-    try {
-      const response = await api.post("/sessions", data);
-      localStorage.setItem("@kenzie-hub-token", response.data.token);
-      localStorage.setItem("@kenzie-hub-id", response.data.user.id);
-      setUser(response.data.user);
-      toast.success("Login feito!");
-      navigate("/home");
-    } catch (err) {
-      console.error(err);
-      toast.error("Dados (e-mail ou senha) incorretos");
-    }
-  }
-
   return (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={<Login toast={toast} submitsLogin={submitsLogin} />}
-        />
+        <Route path="/" element={<Login toast={toast} />} />
         <Route path="/cadastro" element={<Register toast={toast} />} />
-        <Route path="/home" element={<Home user={user} setUser={setUser} />} />
+
+        <Route path="/home" element={<ProtectedRoute />}>
+          <Route
+            index
+            element={
+              <TechProvider>
+                <Home />
+              </TechProvider>
+            }
+          />
+        </Route>
+
         <Route path="*" element={<h1>404 - Página não encontrada ://</h1>} />
       </Routes>
       <ToastContainer

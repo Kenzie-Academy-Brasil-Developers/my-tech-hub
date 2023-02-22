@@ -1,6 +1,7 @@
 import { AppRoutes } from "./routes";
 import { useEffect } from "react";
 import { api } from "./routes/services/api.js";
+import { UserProvider } from "./providers/UserContext.jsx";
 
 function App() {
   useEffect(() => {
@@ -16,7 +17,9 @@ function App() {
 
   return (
     <div>
-      <AppRoutes />
+      <UserProvider>
+        <AppRoutes />
+      </UserProvider>
     </div>
   );
 }

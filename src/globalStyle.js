@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
         --radius: 4px;
 
         --bold-12: 600 0.75rem 'Inter', sans-serif ;
+        --bold-14: 700 0.875rem 'Inter', sans-serif ;
         --bold-16: 700 1rem 'Inter', sans-serif ;
         --bold-18: 700 1.125 'Inter', sans-serif ;
         --regular-12: 400 0.75rem 'Inter', sans-serif ;
@@ -60,6 +61,10 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+  }
+
+  li:hover, button:hover, a:hover {
+    background-color: var(--gray-2);
   }
     `;
 
@@ -118,6 +123,7 @@ export const Container = styled.div`
   }
 
   form button {
+    margin-top: 15px;
     border: none;
     max-width: 100%;
     height: 48px;

@@ -1,12 +1,12 @@
 import { Container } from "../../globalStyle.js";
 import { LinkToLogin } from "../../components/Link/styled.js";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { api } from "../../routes/services/api.js";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Nav } from "../../components/Nav/styled.js";
+import { Nav, NavRegister } from "../../components/Nav/styled.js";
 import { Input } from "../../components/Input/index.jsx";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext.jsx";
 
 const schema = yup
   .object({
@@ -38,7 +38,9 @@ const schema = yup
   })
   .required();
 
-export function Register({ toast }) {
+export function Register() {
+  const { submitsRegister } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
@@ -46,26 +48,15 @@ export function Register({ toast }) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const navigate = useNavigate();
-  async function submitsRegister(data) {
-    delete data.passwordConfirmation;
-    try {
-      await api.post("/users", data);
-      toast.success("Conta criada com sucesso!");
-      navigate("/");
-    } catch (err) {
-      console.error(err);
-      toast.error("Ops! Algo deu errado");
-    }
-  }
+
   return (
     <main>
-      <Nav>
+      <NavRegister id="register">
         <figure>
           <img src="/logo.svg" alt="Logo, em rosa: Kenzie Hub" />
         </figure>
         <LinkToLogin to="/">Voltar</LinkToLogin>
-      </Nav>
+      </NavRegister>
 
       <Container>
         <section id="register-section">

@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Input } from "../../components/Input/index.jsx";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext.jsx";
 
 const schema = yup
   .object({
@@ -15,7 +17,9 @@ const schema = yup
   })
   .required();
 
-export function Login({ submitsLogin }) {
+export function Login() {
+  const { submitsLogin } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,

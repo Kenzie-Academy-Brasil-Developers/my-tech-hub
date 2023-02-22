@@ -5,7 +5,18 @@ export const Nav = styled.nav`
   margin-top: 48px;
   margin-bottom: 38px;
   height: 40px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const NavRegister = styled.nav`
+  margin: 0 auto;
+  margin-top: 48px;
+  margin-bottom: 38px;
   width: 370px;
+  height: 40px;
   max-width: 100%;
   display: flex;
   justify-content: space-between;
@@ -15,12 +26,5 @@ export const Nav = styled.nav`
   }
   @media (max-width: 450px) {
     width: 300px;
-  }
-
-  #nav-home {
-    max-width: 100%;
-    width: 900px;
-    height: 72px;
-    border-bottom: 1px solid var(--gray-3);
   }
 `;

@@ -31,12 +31,4 @@ export const Header = styled.header`
   p {
     font: var(--regular-16);
   }
-
-  #intro {
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    margin-top: 40px;
-    gap: 40px;
-  }
 `;
