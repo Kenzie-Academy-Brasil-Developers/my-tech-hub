@@ -7,7 +7,7 @@ import { InputItem } from "../Input/styled.js";
 import { EditBtns } from "./styled.js";
 
 export function EditTechForm() {
-  const { techs, setTechs } = useContext(UserContext);
+  const { techName } = useContext(UserContext);
   const { register, handleSubmit } = useForm();
 
   const {
@@ -15,8 +15,8 @@ export function EditTechForm() {
     editTechModal,
     setEditTechModal,
     techId,
-    setTechId,
     removeTech,
+    setTechName,
   } = useContext(TechContext);
 
   function submit(formData) {
@@ -24,19 +24,26 @@ export function EditTechForm() {
     setEditTechModal(false);
   }
 
+  function openModal() {
+    setEditTechModal(!editTechModal);
+    setTechName(techName);
+  }
+
   return (
     <ModalWrapper>
       <section>
         <div id="modal-header">
           <p>Tecnologia Detalhes</p>
-          <img
-            src="/close.svg"
-            onClick={() => setEditTechModal(!editTechModal)}
-          />
+          <img src="/close.svg" className="closeBtn" onClick={openModal} />
         </div>
         <form onSubmit={handleSubmit(submit)}>
           <label htmlFor="title">Nome</label>
-          <InputItem type="text" placeholder="Ex.: Typescript" disabled />
+          <InputItem
+            type="text"
+            placeholder="Não editável, apenas o status"
+            disabled
+            bg={"#292e33fd"}
+          />
 
           <label htmlFor="status">Selecionar status</label>
           <select {...register("status")}>

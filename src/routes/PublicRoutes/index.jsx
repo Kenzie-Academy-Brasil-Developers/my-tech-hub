@@ -1,12 +1,12 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home } from "../pages/Home";
-import { Login } from "../pages/Login";
-import { Register } from "../pages/Register";
+import { Home } from "../../pages/Home";
+import { Login } from "../../pages/Login";
+import { Register } from "../../pages/Register";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { TechProvider } from "../providers/TechContext.jsx";
-import { ProtectedRoute } from "../pages/ProtectedRoutes/index.jsx";
+import { TechProvider } from "../../providers/TechContext.jsx";
+import { ProtectedRoute } from "../ProtectedRoute";
 
 export function AppRoutes() {
   return (

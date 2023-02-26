@@ -1,6 +1,6 @@
-import { AppRoutes } from "./routes";
+import { AppRoutes } from "./routes/PublicRoutes/index.jsx";
 import { useEffect } from "react";
-import { api } from "./routes/services/api.js";
+import { api } from "./services/api.js";
 import { UserProvider } from "./providers/UserContext.jsx";
 
 function App() {

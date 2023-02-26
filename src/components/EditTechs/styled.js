@@ -5,7 +5,10 @@ export const EditBtns = styled.div`
   justify-content: space-between;
 
   #save {
-    width: 197px;
+    width: 190px;
+    @media (max-width: 370px) {
+      margin-right: 10px;
+    }
   }
 
   #delete {

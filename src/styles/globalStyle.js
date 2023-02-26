@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
         --regular-16: 500 1rem 'Inter', sans-serif ;
     }
 
-    button{
+    button, .closeBtn{
       cursor: pointer;
     }
     
@@ -66,7 +66,7 @@ const GlobalStyle = createGlobalStyle`
   li:hover, button:hover, a:hover {
     background-color: var(--gray-2);
   }
-    `;
+`;
 
 export default GlobalStyle;
 

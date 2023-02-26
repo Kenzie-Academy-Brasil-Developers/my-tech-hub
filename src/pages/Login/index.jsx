@@ -1,11 +1,12 @@
-import { Container } from "../../globalStyle.js";
-import { LinkSubmit } from "../../components/Link/styled.js";
+import { Container } from "../../styles/globalStyle.js";
+import { LinkSubmit } from "./styled.js";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Input } from "../../components/Input/index.jsx";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../providers/UserContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -18,7 +19,8 @@ const schema = yup
   .required();
 
 export function Login() {
-  const { submitsLogin } = useContext(UserContext);
+  const { submitsLogin, loading, user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -27,6 +29,12 @@ export function Login() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    if (user) {
+      navigate("/home");
+    }
+  }, [loading]);
 
   return (
     <main id="main-login">

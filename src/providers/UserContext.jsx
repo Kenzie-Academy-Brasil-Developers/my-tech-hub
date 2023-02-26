@@ -1,13 +1,14 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { api } from "../routes/services/api.js";
+import { api } from "../services/api.js";
 
 export const UserContext = createContext({});
 
 export function UserProvider({ children }) {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
   const [techs, setTechs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -41,6 +42,11 @@ export function UserProvider({ children }) {
   useEffect(() => {
     async function getUser() {
       const token = localStorage.getItem("@kenzie-hub-token");
+      if (!token) {
+        setLoading(false);
+        setUser(undefined);
+        return;
+      }
       try {
         api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         const response = await api.get("/profile");
@@ -49,6 +55,8 @@ export function UserProvider({ children }) {
       } catch (err) {
         console.log(err);
         localStorage.removeItem("@kenzie-hub-token");
+      } finally {
+        setLoading(false);
       }
     }
     getUser();
@@ -56,7 +64,15 @@ export function UserProvider({ children }) {
 
   return (
     <UserContext.Provider
-      value={{ submitsLogin, submitsRegister, user, setUser, techs }}
+      value={{
+        submitsLogin,
+        submitsRegister,
+        user,
+        setUser,
+        techs,
+        loading,
+        setLoading,
+      }}
     >
       {children}
     </UserContext.Provider>

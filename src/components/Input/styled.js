@@ -10,6 +10,7 @@ export const InputItem = styled.input`
   color: var(--gray-1);
   font: var(--regular-16);
   outline: none;
+  background-color: ${(props) => props.bg};
 
   input::placeholder {
     font: var(--regular-16);

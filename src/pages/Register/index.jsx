@@ -1,9 +1,9 @@
-import { Container } from "../../globalStyle.js";
-import { LinkToLogin } from "../../components/Link/styled.js";
+import { Container } from "../../styles/globalStyle.js";
+import { LinkToLogin } from "./styled.js";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Nav, NavRegister } from "../../components/Nav/styled.js";
+import { NavRegister } from "./styled.js";
 import { Input } from "../../components/Input/index.jsx";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext.jsx";

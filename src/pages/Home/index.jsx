@@ -1,15 +1,15 @@
-import { LinkToLogin } from "../../components/Link/styled.js";
-import { Header } from "../../components/Header/styled.js";
-import { Nav } from "../../components/Nav/styled.js";
 import { UserContext } from "../../providers/UserContext.jsx";
 import { useContext } from "react";
-import { HomeSection } from "./styled.js";
+import { HomeSection, Header, Nav } from "./styled.js";
 import { TechContext } from "../../providers/TechContext.jsx";
 import { RegisterTechForm } from "../../components/RegisterTechForm/index.jsx";
 import { EditTechForm } from "../../components/EditTechs/index.jsx";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
   const {
     techs,
     addTechModal,
@@ -18,15 +18,19 @@ export function Home() {
     setEditTechModal,
     techId,
     setTechId,
+    setTechName,
   } = useContext(TechContext);
 
   function logOut() {
+    setUser(null);
     localStorage.clear();
+    navigate("/");
   }
 
-  function testing(key) {
+  function testing(key, title) {
     setEditTechModal(!editTechModal);
     setTechId(key);
+    setTechName(title);
   }
 
   return (
@@ -36,13 +40,13 @@ export function Home() {
           <figure>
             <img src="/logo.svg" alt="Logo, em rosa: Kenzie Hub" />
           </figure>
-          <LinkToLogin to="/" onClick={logOut}>
+          <button id="logOut" onClick={logOut}>
             Sair
-          </LinkToLogin>
+          </button>
         </Nav>
         <section id="user-info">
-          <h3>Olá, {user.name?.toUpperCase()}</h3>
-          <p> {user.course_module?.toUpperCase()} </p>
+          <h3>Olá, {user.name.toUpperCase()}</h3>
+          <p> {user.course_module.toUpperCase()} </p>
         </section>
         {addTechModal && <RegisterTechForm />}
         {editTechModal && <EditTechForm />}
@@ -55,7 +59,10 @@ export function Home() {
             <ul>
               {techs.length > 0 ? (
                 techs.map((element) => (
-                  <li key={element.id} onClick={() => testing(element.id)}>
+                  <li
+                    key={element.id}
+                    onClick={() => testing(element.id, element.title)}
+                  >
                     <h3>{element.title} </h3>
                     <p>{element.status} </p>
                   </li>

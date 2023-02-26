@@ -1,16 +1,18 @@
 import { useContext, useState } from "react";
 import { createContext } from "react";
-import { api } from "../routes/services/api.js";
+import { api } from "../services/api.js";
 import { UserContext } from "./UserContext.jsx";
 
 export const TechContext = createContext({});
 
 export function TechProvider({ children }) {
-  const { techs, setTechs } = useContext(UserContext);
+  const { techs } = useContext(UserContext);
+
   const token = localStorage.getItem("@kenzie-hub-token");
   const [addTechModal, setAddTechModal] = useState(false);
   const [editTechModal, setEditTechModal] = useState(false);
   const [techId, setTechId] = useState("");
+  const [techName, setTechName] = useState("");
 
   async function registerTech(formData) {
     try {
@@ -62,6 +64,8 @@ export function TechProvider({ children }) {
         setEditTechModal,
         techId,
         setTechId,
+        techName,
+        setTechName,
       }}
     >
       {children}

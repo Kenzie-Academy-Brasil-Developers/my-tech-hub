@@ -21,6 +21,7 @@ export function RegisterTechForm() {
         <div id="modal-header">
           <p>Cadastrar Tecnologia</p>
           <img
+            className="closeBtn"
             src="/close.svg"
             onClick={() => setAddTechModal(!addTechModal)}
           />
