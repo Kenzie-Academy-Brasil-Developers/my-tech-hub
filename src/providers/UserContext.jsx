@@ -45,6 +45,7 @@ export function UserProvider({ children }) {
       if (!token) {
         setLoading(false);
         setUser(undefined);
+        navigate("/");
         return;
       }
       try {
