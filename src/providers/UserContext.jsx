@@ -22,7 +22,6 @@ export function UserProvider({ children }) {
       toast.success("Login feito!");
       navigate("/home");
     } catch (err) {
-      console.error(err);
       toast.error("Dados (e-mail ou senha) incorretos");
     }
   }
@@ -34,7 +33,6 @@ export function UserProvider({ children }) {
       toast.success("Conta criada com sucesso!");
       navigate("/");
     } catch (err) {
-      console.error(err);
       toast.error("Ops! Algo deu errado");
     }
   }
@@ -54,7 +52,6 @@ export function UserProvider({ children }) {
         setUser(response.data);
         setTechs(response.data.techs);
       } catch (err) {
-        console.log(err);
         localStorage.removeItem("@kenzie-hub-token");
       } finally {
         setLoading(false);
