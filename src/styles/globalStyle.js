@@ -65,6 +65,13 @@ const GlobalStyle = createGlobalStyle`
     height: 600px;
   }
 
+  
+  a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
 
   li:hover, button:hover, a:hover {
     background-color: var(--gray-2);
