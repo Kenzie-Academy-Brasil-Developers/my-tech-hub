@@ -25,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
   button, .closeBtn{
    cursor: pointer;
   }
+
     
   *{
     margin: 0;

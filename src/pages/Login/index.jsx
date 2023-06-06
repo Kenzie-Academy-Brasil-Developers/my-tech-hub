@@ -39,7 +39,7 @@ export function Login() {
   return (
     <main id="main-login">
       <figure className="logo">
-        <img src="/logo.svg" alt="Logo, em rosa: Kenzie Hub" />
+        <img src="/logo.svg" alt="" />
       </figure>
       <Container>
         <section id="login-section">

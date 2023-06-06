@@ -57,7 +57,6 @@ export const ModalWrapper = styled.div`
     border: none;
     max-width: 100%;
     height: 48px;
-    color: var(--gray-0);
     background-color: var(--color-primary);
     border-radius: var(--radius);
     font: var(--regular-16);
