@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 export const NavRegister = styled.nav`
   margin: 0 auto;
-  margin-top: 48px;
-  margin-bottom: 38px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   width: 370px;
   height: 40px;
   max-width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   @media (max-width: 800px) {
     width: 70%;

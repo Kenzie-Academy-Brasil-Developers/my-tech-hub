@@ -51,11 +51,13 @@ export function Register() {
 
   return (
     <main>
+      <LinkToLogin to="/" id="back-btn">
+        <img src="back.svg" alt="back symbol" />
+      </LinkToLogin>
       <NavRegister id="register">
         <figure>
           <img src="/logo.svg" alt="Logo, em rosa: Kenzie Hub" />
         </figure>
-        <LinkToLogin to="/">Voltar</LinkToLogin>
       </NavRegister>
 
       <Container>

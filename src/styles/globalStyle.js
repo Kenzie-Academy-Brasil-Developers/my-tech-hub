@@ -3,58 +3,68 @@ import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root{
-        --color-primary: #FF577F;
-        --color-primary-focus: #FF427F;
-        --color-primary-negative: #59323F;
-        --gray-0: #F8F9FA;
-        --gray-1: #868E96;
-        --gray-2: #343B41;
-        --gray-3: #212529;
-        --gray-4: #121214;
+    --color-primary: #6FFF57;
+    --color-primary-focus: #36C81F;
+    --color-primary-negative: #3A964E;
+    --gray-0: #F8F9FA;
+    --gray-1: #868E96;
+    --gray-2: #343B41;
+    --gray-3: #17191B;
+    --gray-4: #121214;
 
-        --radius: 4px;
+    --radius: 4px;
 
-        --bold-12: 600 0.75rem 'Inter', sans-serif ;
-        --bold-14: 700 0.875rem 'Inter', sans-serif ;
-        --bold-16: 700 1rem 'Inter', sans-serif ;
-        --bold-18: 700 1.125 'Inter', sans-serif ;
-        --regular-12: 400 0.75rem 'Inter', sans-serif ;
-        --regular-16: 500 1rem 'Inter', sans-serif ;
-    }
+    --bold-12: 600 0.75rem 'Inter', sans-serif ;
+    --bold-14: 700 0.875rem 'Inter', sans-serif ;
+    --bold-16: 700 1rem 'Inter', sans-serif ;
+    --bold-18: 700 1.125 'Inter', sans-serif ;
+    --regular-12: 400 0.75rem 'Inter', sans-serif ;
+    --regular-16: 500 1rem 'Inter', sans-serif ;
+  }
 
-    button, .closeBtn{
-      cursor: pointer;
-    }
+  button, .closeBtn{
+   cursor: pointer;
+  }
     
-    *{
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        box-sizing: border-box;
-        text-decoration: none;
-    }
+  *{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
     
-    body{
-      background-color: var(--gray-4);
-      font: var(--regular-16);
-      color: var(--gray-0);
-    }
+  body{
+    background-color: var(--gray-4);
+    font: var(--regular-16);
+    color: var(--gray-0);
+  }
 
-    &.logo{
-      display: flex;
-      justify-content: center;
-      margin-top: 77px;
-      margin-bottom: 35px;
-    }
+  &.logo{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 
-    main {
+  main {
     height: 900px;
     width: 100%;
-    }
+    #back-btn{
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    transition: 0.3s ease-in;
+    border-radius: 50%;
+    margin-top: 10px;
+  }
+  }
 
-    #main-login {
+  #main-login {
     height: 600px;
   }
+
+
 
   a{
     display: flex;
@@ -127,7 +137,7 @@ export const Container = styled.div`
     border: none;
     max-width: 100%;
     height: 48px;
-    color: var(--gray-0);
+    color: black;
     background-color: var(--color-primary);
     border-radius: var(--radius);
     font: var(--regular-16);
